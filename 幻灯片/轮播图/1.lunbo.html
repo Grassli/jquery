@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>直接切换图片轮播图</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    h3 {
+        text-align: center;
+    }
+    
+    img {
+        border: 0px;
+    }
+    
+    .slider {
+        width: 730px;
+        height: 454px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .slider>ul {
+        list-style: none;
+    }
+    
+    .slider>.num {
+        position: absolute;
+        top: 424px;
+        left: 305px;
+    }
+    
+    .slider>.num>li {
+        width: 20px;
+        height: 20px;
+        background: #ddd;
+        border-radius: 10px;
+        float: left;
+        line-height: 20px;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .slider div {
+        width: 50px;
+        height: 100px;
+        background: yellow;
+        position: absolute;
+        top: 100px;
+    }
+    
+    .slider .left {
+        left: 0px;
+    }
+    
+    .slider .right {
+        right: 0px;
+    }
+    </style>
+</head>
+
+<body>
+    <h3>原生JS直接切换图片（入门）</h3>
+    <div class="slider">
+        <ul class="img">
+            <li>
+                <a href="#1"><img src="image/a.jpg" alt=""></a>
+            </li>
+            <li style="display:none;">
+                <a href="#2"><img src="image/b.jpg" alt=""></a>
+            </li>
+            <li style="display:none;">
+                <a href="#3"><img src="image/c.jpg" alt=""></a>
+            </li>
+            <li style="display:none;">
+                <a href="#4"><img src="image/d.jpg" alt=""></a>
+            </li>
+            <li style="display:none;">
+                <a href="#5"><img src="image/e.jpg" alt=""></a>
+            </li>
+            <li style="display:none;">
+                <a href="#6"><img src="image/f.jpg" alt=""></a>
+            </li>
+        </ul>
+        <ul class="num">
+            <li style="background:red;">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+        <div class="left">左</div>
+        <div class="right">右</div>
+    </div>
+    <script>
+    window.onload = function() {
+        /*
+
+        图片轮播需要完成的任务
+        1.图片和数字自动轮播
+        2.鼠标移入，轮播暂停，鼠标移出，继续轮播
+        3.鼠标移入数字上，显示对应的图片，移出继续轮播
+        */
+        // 1.获取对象
+        var imgObj = document.getElementsByClassName('img')[0].getElementsByTagName('li');
+        var liObj = document.getElementsByClassName('num')[0].getElementsByTagName('li');
+        var sliderObj = document.getElementsByClassName('slider')[0];
+
+        // 默认显示第一张图片
+        var now = 0;
+        var len = imgObj.length;
+
+        // 定时器
+        var s = null;
+
+        function run() {
+            s = setInterval(function() {
+                // 所有的图片和数字豆恢复默认
+                for (var i = 0; i < len; i++) {
+                    imgObj[i].style.display = 'none';
+                    liObj[i].style.background = '#ddd';
+                }
+
+                // 将当前指针++
+                now++;
+                if (now > len - 1) {
+                    now = 0;
+                }
+
+                // 显示当前指针对应的图片和背景色
+                imgObj[now].style.display = 'block';
+                liObj[now].style.background = 'red';
+            }, 1000)
+        }
+        run();
+
+        // 鼠标的移入移出
+        sliderObj.onmouseover = function() {
+            clearInterval(s);
+        }
+        sliderObj.onmouseout = function() {
+            run();
+        }
+
+        // 移入移出数字
+        for (var j = 0; j < len; j++) {
+            liObj[j].index = j
+            liObj[j].onmouseover = function() {
+                // 所有的图片和数字豆恢复默认
+                for (var i = 0; i < len; i++) {
+                    imgObj[i].style.display = 'none';
+                    liObj[i].style.background = '#ddd';
+                }
+
+                // 将当前指针++
+                now = this.index;
+
+                // 显示当前指针对应的图片和背景色
+                imgObj[now].style.display = 'block';
+                liObj[now].style.background = 'red';
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>

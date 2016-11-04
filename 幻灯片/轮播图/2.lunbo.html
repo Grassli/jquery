@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>直接切换图片轮播图</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    h3 {
+        text-align: center;
+    }
+    
+    img {
+        border: 0px;
+    }
+    
+    .slider {
+        width: 730px;
+        height: 454px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .slider>ul {
+        list-style: none;
+    }
+    
+    .slider>.num {
+        position: absolute;
+        top: 424px;
+        left: 305px;
+    }
+    
+    .slider>.num>li {
+        width: 20px;
+        height: 20px;
+        background: #ddd;
+        border-radius: 10px;
+        float: left;
+        line-height: 20px;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .slider div {
+        width: 50px;
+        height: 100px;
+        background: yellow;
+        position: absolute;
+        top: 100px;
+    }
+    
+    .slider .left {
+        left: 0px;
+    }
+    
+    .slider .right {
+        right: 0px;
+    }
+    </style>
+</head>
+
+<body>
+    <h3>jquery实现轮播图</h3>
+    <div class="slider">
+        <ul class="img">
+            <li>
+                <a href="#1"><img src="image/a.jpg" alt=""></a>
+            </li>
+            <li style="display:none;">
+                <a href="#2"><img src="image/b.jpg" alt=""></a>
+            </li>
+            <li style="display:none;">
+                <a href="#3"><img src="image/c.jpg" alt=""></a>
+            </li>
+            <li style="display:none;">
+                <a href="#4"><img src="image/d.jpg" alt=""></a>
+            </li>
+            <li style="display:none;">
+                <a href="#5"><img src="image/e.jpg" alt=""></a>
+            </li>
+            <li style="display:none;">
+                <a href="#6"><img src="image/f.jpg" alt=""></a>
+            </li>
+        </ul>
+        <ul class="num">
+            <li style="background:red;">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+        <div class="left">左</div>
+        <div class="right">右</div>
+    </div>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+    $(function() {
+        var now = 0;
+        var len = $('.img>li').length;
+
+        // 图片和数字轮播
+        var s = null;
+
+        function run() {
+            s = setInterval(function() {
+                now++;
+                if (now > len - 1) {
+                    len = 0;
+                }
+                $('.img>li').eq(now).show().siblings().hide();
+
+                $('.num>li').eq(now).css('background', 'red').siblings().css('background', '#ddd');
+            }, 1000)
+        }
+        run();
+
+        // 鼠标移入slider
+        $('.slider').mouseover(function() {
+            clearInterval(s);
+        }).mouseout(function() {
+            run();
+        })
+
+        // 移入数字
+        $('.num>li').mouseover(function() {
+
+            now = $(this).index();
+
+            $('.img>li').eq(now).show().siblings().hide();
+
+            $('.num>li').eq(now).css('background', 'red').siblings().css('background', '#ddd');
+        })
+    })
+    </script>
+</body>
+
+</html>

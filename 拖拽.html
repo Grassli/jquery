@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>拖拽</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		div{ width: 100px; height: 100px; background: #ccc; position: absolute; }
+	</style>
+	<script src='jquery.min.js'></script>
+	<script>
+		$(function(){
+			var dx=0,dy=0,$obj=$('div'),
+				w=$obj.width();
+				h=$obj.height();
+			
+			$obj.on({
+
+				'mousedown':function(e){
+								dx=e.pageX-$(this).offset().left;
+								dy=e.pageY-$(this).offset().top;
+
+								$(document).on('mousemove',function(event){
+									$obj.css({
+										left: Math.max(event.pageX-dx,0) && 
+											  Math.min(event.pageX-dx,$(window).width()-w) ,
+										top: Math.max(event.pageY-dy,0) && 
+											 Math.min(event.pageY-dy,$(window).height()-h) })
+										})
+								$(document).on('mouseup',function(){ $(this).off();})
+							}
+
+			})
+			
+
+
+		})
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

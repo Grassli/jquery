@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.8.3/jquery.min.js"></script>
+	<style>
+		*{margin: 0;padding: 0;}
+		#min{width:384px;margin:100px 0 0 300px;display:block;}	
+		#max{width:300px;height:300px;overflow:hidden;display:none;position: absolute;}
+	</style>
+</head>
+<body>
+	<img id="min" src="images/Meinv112.jpg" alt="">
+	<div id="max">
+		<img src="images/Meinv112.jpg" alt="">	
+	</div>
+	<script>
+		// 鼠标移入到小图
+		$('#min').mouseover(function(){
+			// 获取小图当前的位置
+			var pos = $(this).offset();
+			// var pos = $(this).position();
+			// 获取小图当前的宽度
+			var w   = $(this).width();
+			// 根据小图的位置设置大图的位置
+			$('#max').css({top:pos.top,left:pos.left+w+5}).show();
+			// 移出小图	
+		}).mouseout(function(){
+			//大图 隐藏
+			$('#max').hide();
+		}).mousemove(function(e){
+			// console.log('a');
+			// e.pageY*5-150   用 5 是因为 我们把 大图 缩小的5倍
+			// $('#max').scrollTop(e.pageY*5-150).scrollLeft(e.pageX*5-150);
+			// alert($('#min').css('marginLeft'))
+			var minLeft = parseInt($(this).css('marginLeft'));
+			var minTop  = parseInt($(this).css('marginTop'));
+			// console.log(e.pageX+' : '+e.pageY);
+			console.log(minTop+' : '+minLeft);
+			$('#max').scrollTop((e.pageY-minTop)*5-150).scrollLeft((e.pageX-minLeft)*5-150)
+		});
+	</script>
+</body>
+</html>

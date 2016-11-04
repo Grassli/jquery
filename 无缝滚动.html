@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>	
+	<script src="jquery.min.js"></script>
+	<style>
+		*{ margin: 0;padding: 0;list-style: none;}
+		.box{ width: 1200px; height: 400px; margin: 50px auto; position: relative; overflow: hidden; background: blue; }
+		.nav{ width: 1200px; height: 400px; position: absolute; top: 0; left: 0; }
+		.nav li{ width: 300px; height: 100%; float: left; }
+		.nav li img{ width: 300px; height: 400px; }
+		.dir{ width: 150px; height: 40px; margin: 20px auto; }
+		.bt{ width: 60px; height: 100%;  font-size: 20px; color: #fff; text-align: center; line-height: 40px; background: #333;}
+		.bt:hover{ cursor: pointer; }
+		.left{ float: left; }
+		.right{ float: right; }
+	</style>
+	</head>
+<body>	
+	<div class='box'>
+		<ul class='nav'>
+			<li><img src='images/1.jpg' /></li>
+			<li><img src='images/2.jpg' /></li>
+			<li><img src='images/3.jpg' /></li>
+			<li><img src='images/4.jpg' /></li>
+		</ul>	
+	</div>
+	<div class='dir'>
+			<div id='lf' class='bt left'>&lt;</div>
+			<div id='rg' class='bt right'>&gt;</div>
+	</div>
+	<script>
+		// 获取ul的宽度
+		var oulWidth=$('.nav').width();
+		//设定运动的初始速度
+		var speed=10000;
+		//复制一份li加到它本身后面
+		$('li').clone().appendTo($('ul'));
+		//设置ul的宽度
+		$('.nav').width(function(){return oulWidth*2;})
+		//默认向左滚动
+		run(runLeft,'0',-oulWidth);
+		//点击向左
+		$('#lf').click(function(){
+				$('.nav').stop();
+				run(runLeft,'0',-oulWidth)
+		});
+		//点击向右
+		$('#rg').click(function(){
+				$('.nav').stop();
+				run(runRight,-oulWidth,'0')
+			});			 
+		//运动的回调函数
+		function run(fn,lf1,lf2){
+				$('.nav').css('left',lf1)
+						 .animate({left: lf2 },speed,'linear',fn);
+			}
+		function runLeft(){
+			if($('.nav').position().left<=-oulWidth){
+				run(runLeft,'0',-oulWidth);
+			}
+		}
+		function runRight(){
+			if($('.nav').position().left>=0){
+				run(runRight,-oulWidth,'0');
+			}
+		}
+		$('.box').mouseover(function(){
+			
+		});
+	</script>
+</body>
+</html>
+

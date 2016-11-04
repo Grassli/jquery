@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=gb2312" http-equiv="Content-Type">
+<STYLE type="text/css">
+body{position:relative;margin:0;padding:55px 0 0 0;}
+</STYLE>
+<TITLE>多屏轮播左右箭头的jQuery焦点图片代码_特效脚本 js.itobe.cn</TITLE><LINK rel="stylesheet" 
+type="text/css" href="demo_files/js.itobe.cn.css"><LINK rel="stylesheet" type="text/css" 
+href="demo_files/flexslider.min.css">
+<SCRIPT type="text/javascript" src="demo_files/jquery.min.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="demo_files/jquery.flexslider.min.js"></SCRIPT>
+
+<META name="GENERATOR" content="MSHTML 9.00.8112.16496"></HEAD>
+<BODY>
+<SCRIPT type="text/javascript">
+
+$(window).load(function() {
+$('.flexslider').flexslider();
+});
+
+$(document).ready(function() {
+$('.flexslider').hover(function() {
+$('.flex-direction-nav li a.prev').css('display', 'block');
+$('.flex-direction-nav li a.next').css('display', 'block');
+}, function() {
+$('.flex-direction-nav li a.prev').css('display', 'none');
+$('.flex-direction-nav li a.next').css('display', 'none');
+});
+
+});
+
+</SCRIPT>
+
+<CENTER>
+<DIV class="moduletable-banner">
+<DIV class="flexslider">
+<UL class="slides">
+  <LI><A href="http://js.itobe.cn/" target="_blank"><IMG src="demo_files/banner.png"></A></LI>
+  <LI><A href="http://js.itobe.cn/" target="_blank"><IMG src="demo_files/kitkat.png"></A></LI>
+  <LI><A href="http://js.itobe.cn/" target="_blank"><IMG src="demo_files/miui.png"></A></LI>
+  <LI><A href="http://js.itobe.cn/" target="_blank"><IMG src="demo_files/ios.png"></A></LI></UL></DIV>
+</DIV></CENTER>
+<DIV style="color: rgb(102, 102, 102); clear: both; font-size: 12px;" id="foot_bm" 
+align="center"><A href="http://js.itobe.cn" target="_blank"><STRONG>多屏轮播左右箭头的jQuery焦点图片代码</STRONG></A><A 
+href="http://js.itobe.cn" 
+target="_blank">[源码下载][使用帮助]</A></DIV></BODY></HTML>

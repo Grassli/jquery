@@ -1,0 +1,84 @@
+ol {
+	list-style: none;
+}
+ul {
+	list-style: none;
+}
+.flexslider {
+	width: 100%; height: 100%; overflow: hidden;
+}
+.flexslider .slides > li {
+	display: none;
+}
+.flexslider .slides img {
+	display: block; max-width: 100%;
+}
+.slides::after {
+	height: 0px; line-height: 0; clear: both; display: block; visibility: hidden; content: ".";
+}
+html[xmlns] .slides {
+	display: block;
+}
+* html .slides {
+	height: 1%;
+}
+.no-js .slides > li:first-child {
+	display: block;
+}
+.flexslider {
+	position: relative; zoom: 1;
+}
+.flexslider .slides {
+	zoom: 1;
+}
+.flexslider .slides > li {
+	position: relative;
+}
+.flex-caption {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000); zoom: 1;
+}
+.flex-caption {
+	background: rgba(0, 0, 0, 0.3); padding: 2%; left: 0px; width: 96%; bottom: 0px; color: rgb(255, 255, 255); line-height: 18px; font-size: 14px; position: absolute; text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
+}
+.flex-direction-nav {
+	height: 0px; overflow: hidden;
+}
+.flex-direction-nav li a {
+	top: 50%; width: 47px; height: 80px; text-indent: -9999px; margin-top: -40px; display: none; position: absolute; cursor: pointer;
+}
+.flex-direction-nav li a.next {
+	background: url("../demo_files/bg_direction_nav.png") no-repeat -47px 0px; right: 0px;
+}
+.flex-direction-nav li a.next:hover {
+	
+}
+.flex-direction-nav li a.next:active {
+	background: url("../demo_files/bg_direction_nav.png") no-repeat -47px -80px;
+}
+.flex-direction-nav li a.prev {
+	background: url("../demo_files/bg_direction_nav.png") no-repeat 0px 0px; left: 0px;
+}
+.flex-direction-nav li a.prev:hover {
+	
+}
+.flex-direction-nav li a.prev:active {
+	background: url("../demo_files/bg_direction_nav.png") no-repeat 0px -80px;
+}
+.flex-direction-nav li a.disabled {
+	filter: alpha(opacity=30); cursor: default; opacity: 0.3;
+}
+.flex-control-nav {
+	right: 0px; bottom: 0px; position: absolute;
+}
+.flex-control-nav li {
+	margin-right: 10px; margin-bottom: 6px; display: inline-block; zoom: 1;
+}
+.flex-control-nav li a {
+	background: url("../demo_files/bg_control_nav.png") no-repeat 0px 0px; width: 10px; height: 10px; text-indent: -9999px; display: block; cursor: pointer; _background: url(img/bg_control_nav-0.png) no-repeat scroll 0 0 transparent;
+}
+.flex-control-nav li a:hover {
+	background-position: 0px -10px; _background: url(img/bg_control_nav-1.png) no-repeat scroll 0 0 transparent;
+}
+.flex-control-nav li a.active {
+	background-position: 0px -20px; cursor: default; _background: url(img/bg_control_nav-2.png) no-repeat scroll 0 0 transparent;
+}

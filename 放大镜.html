@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>	
+	<script src="jquery.min.js"></script>
+	<script src='jquery-migrate-1.1.0.min.js'></script>
+	<style>
+		*{margin: 0;padding: 0;list-style: none;}
+		.container{width: 450px;margin-left: 200px;}
+		.main-image{width: 408px;height: 544px;position: relative;}
+		.sm img{width: 408px;height: 544px;}
+		.big-img{width: 500px;height: 544px;position: absolute;top: 0;left: 408px;overflow: hidden;display: none;}
+		.big-img img{display: none;}
+		.more-images{padding: 10px;width: 360px;margin: 10px 0 0 20px;border: 2px solid #ccc;}
+		.more-images img{width: 80px;height: 100px;border: 3px solid #fff;}
+	</style>
+	</head>
+<body><div class='container'>
+		<div class='main-image'>
+			<div class='sm'><img src='images/1.jpg'></div>
+			<div class='big-img'>
+				<img src='images/1.jpg' style='display: block;'>
+				<img src='images/2.jpg'>
+				<img src='images/3.jpg'>
+				<img src='images/4.jpg'>
+			</div>
+		</div>
+		<div class='more-images'>
+			<img src='images/1.jpg' alt='2.jpg' title='beauty'>
+			<img src='images/2.jpg' alt='2.jpg' title='beauty'>
+			<img src='images/3.jpg' alt='2.jpg' title='beauty'>
+			<img src='images/4.jpg' alt='2.jpg' title='beauty'>
+		</div>
+	</div>
+	<script> 
+		$('.sm').mouseover(function(){
+			$('.big-img').show()
+		}).mouseout(function(){
+			$('.big-img').hide();
+		}).mousemove(function(e){
+			var  oleft=e.pageX-$('.sm').offset().left,
+			     otop=e.pageY-$('.sm').offset().top,
+			     owidth=$('.sm img').width(),
+			     oheight=$('.sm img').height();
+			$('.big-img').scrollLeft(oleft*6-owidth/2)
+						 .scrollTop(otop*6-oheight/2);
+		});
+		$('.more-images img').on({
+			mouseover:function(){
+							$('.more-images img').css('border','3px solid #fff');
+							$(this).css('border','3px solid yellowgreen');
+						},
+			click:function(){
+				var xh;//序号
+				$(this).clone()
+					   .replaceAll('.sm img')
+					   .css('border','3px solid #fff');
+				xh=$(this).index();
+				$('.big-img img').css('display','none');
+				$('.big-img img').eq(xh).css('display','block')
+			}
+		})
+	</script>
+</body>
+</html>
+

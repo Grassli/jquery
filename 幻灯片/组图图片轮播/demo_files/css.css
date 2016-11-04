@@ -1,0 +1,153 @@
+h1 {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+h2 {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+h3 {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+h4 {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+h5 {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+h6 {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+p {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+ul {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+ol {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+li {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+form {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+img {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+dl {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+dt {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+dd {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+table {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+th {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+td {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+blockquote {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+fieldset {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+div {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+strong {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+label {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+em {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+ul {
+	list-style: none;
+}
+ol {
+	list-style: none;
+}
+li {
+	list-style: none;
+}
+input {
+	margin: 0px; font-size: 12px; vertical-align: middle;
+}
+button {
+	margin: 0px; font-size: 12px; vertical-align: middle;
+}
+body {
+	margin: 0px auto; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 12px;
+}
+table {
+	border-collapse: collapse; border-spacing: 0;
+}
+.clearfloat {
+	height: 0px; line-height: 0; clear: both; font-size: 1px;
+}
+#container {
+	margin: 0px auto; width: 995px; text-align: left;
+}
+a {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+a:hover {
+	color: rgb(239, 155, 17); text-decoration: underline;
+}
+.protal-column-t1 .column2 {
+	margin: 20px auto; width: 834px;
+}
+.protal-column-t1 #column2-1-1 {
+	width: 670px; height: 414px; margin-right: 4px; float: left;
+}
+.protal-column-t1 #column2-1-2 {
+	float: left;
+}
+.protal-column-t1 #column2-1-2-1 {
+	border: 1px solid rgb(228, 228, 228); width: 158px;
+}
+.protal-column-t1 #column2-1-2-1 img {
+	margin-bottom: 4px;
+}
+.protal-column-t1 #column2-1-2-2 img {
+	margin-top: 4px;
+}
+.protal-column-t1 #articlecontent {
+	line-height: 20px; padding-top: 11px; padding-bottom: 15px; padding-left: 10px;
+}
+.protal-column-t1 #column2-2-1 {
+	width: 834px; overflow: hidden; clear: both;
+}
+.protal-column-t1 #column2-2-1 .column2-2-1-1 {
+	background: url("../BImages/indeximg/v1/topC002.jpg") repeat-x; width: 830px; height: 44px; margin-bottom: 5px;
+}
+.protal-column-t1 #column2-2-1 .column2-2-1-1 .fright {
+	padding-top: 25px;
+}
+.protal-column-t1 #column2-2-2 ul {
+	width: 764px; padding-left: 10px;
+}
+.protal-column-t1 #column2-2-2 li {
+	width: 191px; text-align: left; line-height: 150%; margin-bottom: 10px; float: left;
+}
+.protal-column-t1 #column2-2-2 li img {
+	margin-bottom: 5px;
+}
+.protal-column-t1 #column2-2-2 div {
+	float: left;
+}
+.arrow_left {
+	width: 30px; padding-top: 260px;
+}
+.arrow_right {
+	width: 30px; padding-top: 260px;
+}

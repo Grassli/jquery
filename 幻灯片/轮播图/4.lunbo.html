@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>直接切换图片轮播图</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    h3 {
+        text-align: center;
+    }
+    
+    img {
+        border: 0px;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    
+    .slider {
+        width: 730px;
+        height: 454px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .slider .img {
+        /*width: 730*7*/
+        width: 9999px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .slider .img li {
+        width: 730px;
+        height: 454px;
+        float: left;
+    }
+    
+    .slider .num {
+        position: absolute;
+        top: 424px;
+        left: 305px;
+    }
+    
+    .slider .num li {
+        width: 20px;
+        height: 20px;
+        background: #ddd;
+        border-radius: 10px;
+        float: left;
+        line-height: 20px;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .slider div {
+        width: 50px;
+        height: 100px;
+        background: yellow;
+        position: absolute;
+        top: 100px;
+    }
+    
+    .slider .left {
+        left: 0px;
+    }
+    
+    .slider .right {
+        right: 0px;
+    }
+    </style>
+</head>
+
+<body>
+    <h3>无缝图片轮播</h3>
+    <!--
+	slider的scrollleft解决，不过.num也会被移动
+	那么就都定位，这样就可以
+	margin-left也行
+    -->
+    <div class="slider">
+        <ul class="img">
+            <li>
+                <a href="#1"><img src="image/a.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#2"><img src="image/b.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#3"><img src="image/c.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#4"><img src="image/d.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#5"><img src="image/e.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#6"><img src="image/f.jpg" alt=""></a>
+            </li>
+        </ul>
+        <ul class="num">
+            <li style="background:red;">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+        <div class="left">左</div>
+        <div class="right">右</div>
+    </div>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+    $(function() {
+        // 图片自动轮播
+        var now = 0;
+
+        // 要做无缝滚动，则需要克隆图片
+        $('.img>li:first').clone(true).appendTo($('.img'));
+
+        // 图片总个数
+        var len = $('.img>li').length;
+
+        // 图片和数字都轮播
+        var s;
+
+        function run() {
+            s = setInterval(function() {
+                // 当图片滚动到最后一张克隆的图片的时候，马上将ul定位到第一个，并将now变为0
+                // 获取当前显示图片的索引
+                // 下次要显示的图片
+                now++;
+
+                move();
+            }, 2000);
+        }
+        run();
+
+        //  鼠标移入和移出
+        $('.slider').mouseover(function() {
+            clearInterval(s);
+        }).mouseout(function() {
+            run();
+        })
+
+        // 鼠标点击数字
+        $('.num>li').click(function() {
+            console.log(now);
+            var prev = now;
+
+            now = $(this).index();
+
+            $('.img').stop().animate({
+                left: -now * 730
+            }, 1000)
+
+            $('.num li').eq(now).css('background', "red").end().eq(prev).css('background', '#ddd');
+        })
+
+        $('.left').click(function() {
+            now--;
+            move();
+        })
+
+        $('.right').click(function() {
+            now++;
+            move();
+        })
+
+        function move() {
+            console.log(now);
+            // 当now的值与最大值想等的时候，将now变为0从头开会
+            if (now == len) {
+                now = 1;
+                $('.img').css('left', 0);
+            }
+
+            console.log(now);
+            // 当now的值为最小值的时候，将now变为最大值，并且移动位置到末尾
+            if (now == -1) {
+                now = len - 2;
+                $('.img').css("left", -(len - 1) * 730);
+            }
+            console.log(now);
+
+            $('.img').stop().animate({
+                left: -now * 730
+            }, 500);
+
+            //  当滚动到克隆的哪个图片上的时候
+            $('.num li').eq(now == len - 1 ? 0 : now).css('background', 'red').siblings().css('background', '#ddd');
+        }
+    })
+    </script>
+</body>
+
+</html>
